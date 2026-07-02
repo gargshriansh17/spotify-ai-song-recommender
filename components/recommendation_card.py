@@ -1,52 +1,18 @@
 import streamlit as st
 
-def recommendation_card(
-    song,
-    artist,
-    similarity,
-    mood,
-    genre,
-    popularity,
-    image_url,
-    spotify_url
-):
+def recommendation_card(song, artist, similarity, mood, genre, popularity, album_cover=None, spotify_url=None):
+    
+    if album_cover:
+        st.image(album_cover, width=200)
+    else:
+        st.image("assets/default_album.jpg", width=200)
 
-    st.markdown(
-        "<div class='song-card'>",
-        unsafe_allow_html=True
-    )
+    st.markdown(f"### 🎵 {song}")
+    st.markdown(f"🎤 **{artist}**")
+    st.markdown(f"🎭 Mood: `{mood}`")
+    st.markdown(f"🎸 Genre: `{genre}`")
+    st.markdown(f"🔥 Popularity: `{popularity}`")
+    st.markdown(f"✅ Similarity: `{similarity}%`")
 
-    st.image(
-        image_url,
-        width=150
-    )
-
-    st.markdown(
-        f"### {song}"
-    )
-
-    st.caption(
-        artist
-    )
-
-    st.caption(f"Genre: {genre}")
-    st.caption(f"Mood:{mood}")
-    st.caption(f"Popularity: {popularity}")
-
-    st.progress(
-        similarity / 100
-    )
-
-    st.write(
-        f"🎯 {similarity}% Match"
-    )
-
-    st.link_button(
-        "🎵 Open in Spotify",
-        spotify_url
-    )
-
-    st.markdown(
-        "</div>",
-        unsafe_allow_html=True
-    )
+    if spotify_url:
+        st.markdown(f"[▶ Open in Spotify]({spotify_url})")
