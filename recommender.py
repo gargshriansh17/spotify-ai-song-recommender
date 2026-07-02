@@ -485,6 +485,10 @@ def get_recommendations(song_name, song_index=None):
 
     return recommendations
 
+import os
+
+os.makedirs("models",exist_ok=True)
+
 
 pickle.dump(
     genre_models,
