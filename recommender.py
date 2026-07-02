@@ -485,21 +485,12 @@ def get_recommendations(song_name, song_index=None):
 
     return recommendations
 
-import os
-
-os.makedirs("models",exist_ok=True)
-
-
-pickle.dump(
-    genre_models,
-    open("models/genre_models.pkl", "wb")
-)
-
-pickle.dump(
-    scaler,
-    open("models/scaler.pkl", "wb")
-)
-
-print("Models saved successfully")
+# REPLACE WITH THIS:
+if __name__ == "__main__":
+    import os
+    os.makedirs("models", exist_ok=True)
+    pickle.dump(genre_models, open("models/genre_models.pkl", "wb"))
+    pickle.dump(scaler, open("models/scaler.pkl", "wb"))
+    print("Models saved successfully")
 
 
